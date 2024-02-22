@@ -1,14 +1,29 @@
 import { Chart } from "react-google-charts";
 import Main from './assets/img/main.png';
+import Logo from './assets/img/logo.png';
 import './App.css';
 
 export const data = [
-  ["Task", "Hours per Day"],
-  ["Факт", 112],
-  ["Осталось", 12],
+  ["Label", "Sum"],
+  ["Факт", 200],
+  ["Осталось", 30],
 ];
 
 export const options = {
+  legend: "none",
+  pieSliceText: "value",
+  pieSliceTextStyle: {
+    color: '#fff',
+    fontSize: 20,
+  },
+  tooltip: {
+    textStyle: { color: '#3F2BBE', fontSize: 14 },
+    showColorCode: true
+  },
+  'chartArea': {
+    width: '80%', // make sure this is the same for the chart and control so the axes align right
+    height: '80%'
+  },
   is3D: true,
   backgroundColor: 'transparent',
   slices: {
@@ -29,6 +44,7 @@ const App = () => {
     <div className="app">
       <div className="app-background">
       </div>
+
       <div className="wrapper">
         <img className="wrapper-img" src={Main} />
         <div className="wrapper-text">
@@ -39,9 +55,13 @@ const App = () => {
             data={data}
             options={options}
             width={"100%"}
-            height={"300px"}
+            height={"400px"}
           />
         </div>
+      </div>
+
+      <div className='logo'>
+        <img src={Logo} className="logo-img" />
       </div>
     </div>
   );

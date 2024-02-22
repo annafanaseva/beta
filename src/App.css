@@ -1,35 +1,51 @@
 .app {
+  overflow: hidden;
   position: relative;
-  width: 100vw;
+  max-width: 100vw;
   height: 100vh;
   background: linear-gradient(to right, #3f2bbe 50%, #e15897);
 }
 
 .app-background {
   position: absolute;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   background: url("assets/img/main.png") center center no-repeat fixed;
   background-size: cover;
   opacity: 0.2;
 }
 
 .wrapper {
+  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-around;
+}
+
+.wrapper-text {
+  z-index: 10;
 }
 
 .wrapper-img {
-  width: 40%;
-  margin-top: 5%;
+  width: 38%;
 }
 
-.wrapper-text p{
-  max-width: 80%;
-  margin: 40px auto;
+.wrapper-text p {
+  margin: 0 auto;
   text-align: center;
   color: #fff;
   font-weight: 600;
-  font-size: 40px;
+  font-size: 2em;
+}
+
+.logo {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  height: 70px;
+}
+
+.logo img {
+  height: 70px;
 }

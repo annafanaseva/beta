@@ -3,7 +3,21 @@
   position: relative;
   max-width: 100vw;
   height: 100vh;
-  background: linear-gradient(to right, #3f2bbe 50%, #e15897);
+  background: linear-gradient(149deg, #3f2bbe 0%, #3f2bbe 42%, #e15897 72%, #e15897 100%);
+  animation: gradient 12s infinite linear;
+  background-size: 400%;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 80% 0%;
+  }
+  50% {
+    background-position: 20% 100%;
+  }
+  100% {
+    background-position: 80% 0%;
+  }
 }
 
 .app-background {
@@ -24,19 +38,37 @@
 }
 
 .wrapper-text {
+  position: relative;
   z-index: 10;
+}
+
+.chart-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 70%;
 }
 
 .wrapper-img {
   width: 38%;
+  z-index: 10;
 }
 
-.wrapper-text p {
+.chart-text-main {
   margin: 0 auto;
   text-align: center;
   color: #fff;
+  font-weight: 800;
+  font-size: 5em;
+}
+
+.chart-text-info{
+  color: #fff;
+  margin: 6px auto;
+  text-align: center;
   font-weight: 600;
-  font-size: 2em;
+  font-size: 1.2em;
 }
 
 .logo {

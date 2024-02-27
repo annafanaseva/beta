@@ -1,38 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { Chart } from "react-google-charts";
 
-import Main from './assets/img/main.png';
+import Main from './assets/img/wow.png';
 import Logo from './assets/img/logo.png';
 
 import './App.css';
-
-export const options = {
-  legend: "none",
-  pieSliceText: "value",
-  pieSliceTextStyle: {
-    color: '#fff',
-    fontSize: 20,
-  },
-  tooltip: {
-    textStyle: { color: '#3F2BBE', fontSize: 14 },
-    showColorCode: true
-  },
-  'chartArea': {
-    width: '80%', // make sure this is the same for the chart and control so the axes align right
-    height: '80%'
-  },
-  is3D: true,
-  backgroundColor: 'transparent',
-  slices: {
-    0: { color: "#3F2BBE" },
-    1: { color: "#E15897" },
-  },
-};
 
 const App = () => {
   const [actualAmount, setActualAmount] = useState(null);
 
   const API_URL = "http://progers2:5200/api/suppliers/efficiency";
+  const plan = 230000000;
 
   useEffect(() => {
     const fetchData = async () => {
@@ -48,18 +26,41 @@ const App = () => {
     fetchData();
   }, []);
 
+  const percent = (Math.floor(actualAmount) / plan) * 100;
+
+  const date = new Date();
+  const nextNewYearDate = new Date('December 31, 2024');
+  const daysLeftNewYear = Math.floor((nextNewYearDate.getTime() - date.getTime()) / 1000 / 60 / 60 / 24);
+
+  const options = {
+    legend: "none",
+    pieHole: 0.8,
+    pieSliceText: "none",
+    pieSliceBorderColor: 'transparent',
+    pieSliceTextStyle: {
+      color: '#fff',
+      fontSize: 20,
+    },
+    tooltip: {
+      textStyle: { color: '#3F2BBE', fontSize: 14 },
+      showColorCode: true
+    },
+    'chartArea': {
+      width: '100%', // make sure this is the same for the chart and control so the axes align right
+      height: '100%'
+    },
+    backgroundColor: 'transparent',
+    slices: {
+      0: { color: "#fff" },
+      1: { color: "#D22876" },
+    },
+  };
+
   const data = [
     ["Label", "Sum"],
-    ["Факт", actualAmount],
-    ["Осталось", 230000000 - actualAmount],
+    ["Выполнено", actualAmount],
+    ["Осталось", plan - actualAmount],
   ];
-
-  const daysLeftNewYear = () => {
-    const date = new Date();
-    const nextNewYearDate = new Date('December 31, 2024');
-    const res = ((nextNewYearDate.getTime() - date.getTime()) / 1000 / 60 / 60 / 24);
-    return Math.round(res);
-  }
 
   return (
     <div className="app">
@@ -69,8 +70,6 @@ const App = () => {
       <div className="wrapper">
         <img className="wrapper-img" src={Main} />
         <div className="wrapper-text">
-          <p>До WOW эффекта осталось: {daysLeftNewYear()} дней</p>
-
           {actualAmount !== null &&
             <Chart
               chartType="PieChart"
@@ -79,6 +78,13 @@ const App = () => {
               width={"100%"}
               height={"400px"}
             />}
+
+          <div className="chart-text">
+            <p className="chart-text-info">выполнено</p>
+            <p className="chart-text-main">{Math.floor(percent) + ' %'}</p>
+            <p className="chart-text-info">{'осталось ' + (plan / 1000000 - actualAmount / 1000000).toFixed(3) + ' млн'}</p>
+            <p className="chart-text-info">{daysLeftNewYear + ' дней'}</p>
+          </div>
         </div>
       </div>
 

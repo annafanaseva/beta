@@ -1,13 +1,10 @@
+import React, { useState, useEffect } from 'react';
 import { Chart } from "react-google-charts";
+
 import Main from './assets/img/main.png';
 import Logo from './assets/img/logo.png';
-import './App.css';
 
-export const data = [
-  ["Label", "Sum"],
-  ["Факт", 200],
-  ["Осталось", 30],
-];
+import './App.css';
 
 export const options = {
   legend: "none",
@@ -33,6 +30,30 @@ export const options = {
 };
 
 const App = () => {
+  const [actualAmount, setActualAmount] = useState(null);
+
+  const API_URL = "http://progers2:5200/api/suppliers/efficiency";
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(API_URL);
+        const json = await response.json();
+        setActualAmount(json);
+      } catch (error) {
+        console.log("error", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  const data = [
+    ["Label", "Sum"],
+    ["Факт", actualAmount],
+    ["Осталось", 230000000 - actualAmount],
+  ];
+
   const daysLeftNewYear = () => {
     const date = new Date();
     const nextNewYearDate = new Date('December 31, 2024');
@@ -50,13 +71,14 @@ const App = () => {
         <div className="wrapper-text">
           <p>До WOW эффекта осталось: {daysLeftNewYear()} дней</p>
 
-          <Chart
-            chartType="PieChart"
-            data={data}
-            options={options}
-            width={"100%"}
-            height={"400px"}
-          />
+          {actualAmount !== null &&
+            <Chart
+              chartType="PieChart"
+              data={data}
+              options={options}
+              width={"100%"}
+              height={"400px"}
+            />}
         </div>
       </div>
 

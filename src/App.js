@@ -9,7 +9,7 @@ import './App.css';
 const App = () => {
   const [actualAmount, setActualAmount] = useState(null);
 
-  const API_URL = "http://progers2:5200/api/suppliers/efficiency";
+  const API_URL = "http://progers2.local:5200/api/suppliers/efficiency";
   const plan = 230000000;
 
   useEffect(() => {

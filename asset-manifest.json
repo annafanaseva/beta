@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/beta/static/css/main.57238b2a.css",
-    "main.js": "/beta/static/js/main.27762049.js",
+    "main.css": "/beta/static/css/main.7ee57bd1.css",
+    "main.js": "/beta/static/js/main.8a65412c.js",
     "static/js/592.af6e96cd.chunk.js": "/beta/static/js/592.af6e96cd.chunk.js",
     "static/media/Montserrat-Regular.ttf": "/beta/static/media/Montserrat-Regular.24785cc015b27a3e964b.ttf",
     "static/media/wow.png": "/beta/static/media/wow.e30b7e3e675d99ddacba.png",
     "static/media/main.png": "/beta/static/media/main.060f2c8228b49f0f6844.png",
     "index.html": "/beta/index.html",
-    "main.57238b2a.css.map": "/beta/static/css/main.57238b2a.css.map",
-    "main.27762049.js.map": "/beta/static/js/main.27762049.js.map",
+    "main.7ee57bd1.css.map": "/beta/static/css/main.7ee57bd1.css.map",
+    "main.8a65412c.js.map": "/beta/static/js/main.8a65412c.js.map",
     "592.af6e96cd.chunk.js.map": "/beta/static/js/592.af6e96cd.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.57238b2a.css",
-    "static/js/main.27762049.js"
+    "static/css/main.7ee57bd1.css",
+    "static/js/main.8a65412c.js"
   ]
 }

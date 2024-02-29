@@ -9,7 +9,7 @@ import './App.css';
 const App = () => {
   const [actualAmount, setActualAmount] = useState(null);
 
-  const API_URL = "http://progers2.local:5200/api/suppliers/efficiency";
+  const API_URL = "https://fin.betapress.ru/api/suppliers/efficiency";
   const plan = 230000000;
 
   useEffect(() => {
@@ -51,8 +51,8 @@ const App = () => {
     },
     backgroundColor: 'transparent',
     slices: {
-      0: { color: "#fff" },
-      1: { color: "#D22876" },
+      0: { color: "#D22876" },
+      1: { color: "#fff" },
     },
   };
 

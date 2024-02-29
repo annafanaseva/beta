@@ -68,28 +68,33 @@ const App = () => {
       </div>
 
       <div className="wrapper">
-        <img className="wrapper-img" src={Main} />
-        <div className="wrapper-text">
-          {actualAmount !== null &&
+        <img className="wrapper-img" alt='wow effect' src={Main} />
+
+        {(actualAmount !== null && actualAmount !== 0) ?
+          <div className="wrapper-text">
             <Chart
               chartType="PieChart"
               data={data}
               options={options}
               width={"100%"}
               height={"400px"}
-            />}
+            />
 
-          <div className="chart-text">
-            <p className="chart-text-info">выполнено</p>
-            <p className="chart-text-main">{Math.floor(percent) + ' %'}</p>
-            <p className="chart-text-info">{'осталось ' + (plan / 1000000 - actualAmount / 1000000).toFixed(3) + ' млн'}</p>
-            <p className="chart-text-info">{daysLeftNewYear + ' дней'}</p>
+            <div className="chart-text">
+              <p className="chart-text-info">{'выполнено ' + (actualAmount / 1000000).toFixed(3) + ' млн'}</p>
+              <p className="chart-text-main">{percent.toFixed(2) + ' %'}</p>
+              <p className="chart-text-info">{'осталось ' + (plan / 1000000 - actualAmount / 1000000).toFixed(3) + ' млн'}</p>
+              <p className="chart-text-info">{daysLeftNewYear + ' дней'}</p>
+            </div>
           </div>
-        </div>
+          : (
+            <p className="chart-text-info">Данные обновляются</p>
+          )
+        }
       </div>
 
       <div className='logo'>
-        <img src={Logo} className="logo-img" />
+        <img alt='logo' src={Logo} className="logo-img" />
       </div>
     </div>
   );
